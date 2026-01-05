@@ -9,7 +9,7 @@ pipeline {
     }
 
     environment{
-        registry = 'lehuyphuong/house-price-prediction-api'
+        registry = 'leph3/house-price-prediction-api'
         registryCredential = 'dockerhub'      
     }
 
