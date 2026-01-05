@@ -1,5 +1,10 @@
-# Ref: https://hackmamba.io/blog/2022/04/running-docker-in-a-jenkins-container/
-FROM jenkins/jenkins:lts
+FROM jenkins/jenkins:latest-jdk25
+
 USER root
-RUN curl https://get.docker.com > dockerinstall && chmod 777 dockerinstall && ./dockerinstall
+RUN apt-get update && \
+    apt-get install -y docker.io && \
+    apt-get clean
+
+RUN groupadd -f docker && usermod -aG docker jenkins
+
 USER jenkins
